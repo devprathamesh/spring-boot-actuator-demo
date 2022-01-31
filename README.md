@@ -116,4 +116,22 @@ which will result in
             "templated": false
         }
     }
-} ```
+} 
+```
+
+We can enhance /info endpoint to display customized dynamic information of the application.
+Such as active user count, status of the application connected to it.
+```java
+{
+    "application": {
+        "name": "spring-boot-actuator-demo",
+        "description": "Demo Project for Spring Boot Actuator",
+        "version": "0.0.1-SNAPSHOT"
+    },
+    "productCountByStatus": {
+        "inactive": 1,
+        "active": 2
+    }
+}
+```
+This can be achieved by implementing a custom InfoContributor bean.
