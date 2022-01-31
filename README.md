@@ -135,3 +135,19 @@ Such as active user count, status of the application connected to it.
 }
 ```
 This can be achieved by implementing a custom InfoContributor bean.
+
+We can also implement a custom endpoint for the actuator profile by adding a component which is annotated with 
+@Endpoint(id = <Endpoint_URL>) and annotating a method @ReadOperation.
+
+```java
+{
+    "0.0.1-SNAPSHOT": [
+        "Creating Sample Spring-Boot Project",
+        "Adding Spring Boot Actuator Capabilities"
+    ],
+    "0.0.2-SNAPSHOT": [
+        "Converting application to Docker",
+        "Pushing Build to Container Registry"
+    ]
+}
+```
