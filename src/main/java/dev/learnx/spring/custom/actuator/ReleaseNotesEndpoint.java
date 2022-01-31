@@ -1,10 +1,10 @@
 package dev.learnx.spring.custom.actuator;
 
-import org.springframework.boot.actuate.endpoint.annotation.Endpoint;
-import org.springframework.boot.actuate.endpoint.annotation.ReadOperation;
+import org.springframework.boot.actuate.endpoint.annotation.*;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,5 +28,20 @@ public class ReleaseNotesEndpoint {
     @ReadOperation
     public Map<String, List<String>> getReleaseNotes(){
         return releaseNotes;
+    }
+
+    @ReadOperation
+    public List<String> getReleaseNotesForVersion(@Selector String version){
+        return releaseNotes.get(version);
+    }
+
+    @WriteOperation
+    public void addReleaseNotesForVersion(@Selector String version, String releaseNotes){
+        this.releaseNotes.put(version, Arrays.asList((releaseNotes.split(","))));
+    }
+
+    @DeleteOperation
+    public void removeReleaseNotes(@Selector String version){
+        this.releaseNotes.remove(version);
     }
 }

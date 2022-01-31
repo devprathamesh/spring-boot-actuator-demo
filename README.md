@@ -140,6 +140,7 @@ We can also implement a custom endpoint for the actuator profile by adding a com
 @Endpoint(id = <Endpoint_URL>) and annotating a method @ReadOperation.
 
 ```java
+Endpoint : /actuator/release-notes
 {
     "0.0.1-SNAPSHOT": [
         "Creating Sample Spring-Boot Project",
@@ -151,3 +152,15 @@ We can also implement a custom endpoint for the actuator profile by adding a com
     ]
 }
 ```
+To get release-notes for a specific version we customize the endpoint with @Selector input
+
+``` java
+Endpoint : actuator/release-notes/0.0.1-SNAPSHOT
+
+[
+    "Creating Sample Spring-Boot Project",
+    "Adding Spring Boot Actuator Capabilities"
+]
+```
+
+To insert more values to existing actuator endpoint 
