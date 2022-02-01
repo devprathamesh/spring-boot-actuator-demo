@@ -204,3 +204,38 @@ which will produce output like
     }
 }
 ```
+
+We can add our customized HealthIndicators too by implementing HealthIndicator interface
+and overriding public Health health() method. Based on the logic that we provide for the implementation we shall get output something as below
+```java
+{
+    "status": "DOWN",
+    "components": {
+        "custom": {
+            "status": "UP",
+            "details": {
+                "Application Status": "Application is Up"
+            }
+        },
+        "customLogger": {
+            "status": "DOWN",
+            "details": {
+                "Remote Logger Status": "Remote Logger is Down",
+                "Local Logger Status": "Remote Logger is Down"
+            }
+        },
+        "diskSpace": {
+            "status": "UP",
+            "details": {
+                "total": 314572795904,
+                "free": 303954812928,
+                "threshold": 10485760,
+                "exists": true
+            }
+        },
+        "ping": {
+            "status": "UP"
+        }
+    }
+}
+```
