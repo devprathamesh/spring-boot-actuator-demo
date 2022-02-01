@@ -163,4 +163,44 @@ Endpoint : actuator/release-notes/0.0.1-SNAPSHOT
 ]
 ```
 
-To insert more values to existing actuator endpoint 
+To insert more values to existing actuator endpoint
+```java
+curl -X POST http://127.0.0.1:8080/actuator/release-notes/0.0.5-SNAPSHOT -H "Content-Type: application/json" -d "{\"releaseNotes\" : \"Creating Sample Spring-Boot Project,Adding Spring Boot Actuator Capabilities\"}"
+```
+
+To delete the value from an existing actuator end-point
+```java
+curl -X DELETE http://127.0.0.1:8080/actuator/release-notes/0.0.4-SNAPSHOT
+```
+--------------------------------------
+
+/actuator/health endpoint gives minimal information as below
+```java
+{
+    "status": "UP"
+}
+```
+We can configure actuator properties to return more meaningful information too by adding
+```java
+management.endpoint.health.show-details=always
+```
+which will produce output like
+```java
+{
+    "status": "UP",
+    "components": {
+        "diskSpace": {
+            "status": "UP",
+            "details": {
+                "total": 314572795904,
+                "free": 303955361792,
+                "threshold": 10485760,
+                "exists": true
+            }
+        },
+        "ping": {
+            "status": "UP"
+        }
+    }
+}
+```
