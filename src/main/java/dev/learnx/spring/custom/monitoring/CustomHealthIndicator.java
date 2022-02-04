@@ -2,13 +2,18 @@ package dev.learnx.spring.custom.monitoring;
 
 import org.springframework.boot.actuate.health.Health;
 import org.springframework.boot.actuate.health.HealthIndicator;
-import org.springframework.stereotype.Component;
+import java.util.Random;
 
-@Component
+//Disabling Component
+//@Component
 public class CustomHealthIndicator implements HealthIndicator {
 
     @Override
     public Health health() {
-        return Health.up().withDetail("Application Status", "Application is Up").build();
+        Random random = new Random();
+        if(random.nextBoolean()) {
+            return Health.up().withDetail("Application Status", "Application is Up").build();
+        }
+        return Health.down().withDetail("Application Status", "Application is Up").build();
     }
 }

@@ -239,3 +239,10 @@ and overriding public Health health() method. Based on the logic that we provide
     }
 }
 ```
+HealthIndicator endpoints  Nagios and SolarWinds for monitoring.
+Spring does provide some out of the box HealthIndicators based on the classpath configuration.
+These out of the box HealthIndicators include
+
+* Nested bullet
+* Sub-nested bullet etc
+* Bullet list item 2
